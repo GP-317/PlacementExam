@@ -125,15 +125,8 @@ public class Examen {
 		this.DATE_BEGIN = dateBegin;
 	}
 	
-	public void transferExam() throws SQLException {
-		new CallSQL();
-		String url = CallSQL.getURL();
-		String user = CallSQL.getUser();
-		String mdp = CallSQL.getMDP();
-		
-		DriverManager.getConnection(url, user, mdp);
-		
-	}
+	
+	
 	
 	
 	
