@@ -1,0 +1,34 @@
+	/**
+	 * Convention de codage :
+	 *
+     * 1. Les noms des classes seront en français. Les nom des méthodes seront en anglais.
+     *    Les classes commencent par une majuscule, chaque terme différent prend une majuscule.
+     *    Les méthodes commencent par une majuscule, chaque terme différent prend une minuscule.
+     *    Exemple : public class Utilisateur { ... }
+     *                public static void getUserID { ... }
+     *    
+     * 2. Les constantes seront en majuscule, associées à des underscores pour remplacer les espaces.
+     *    Les variables seront en majuscules, sans espaces. La séparation entre deux termes se fera par la mise en majuscule de la première lettre (au moins).
+     *    Exemple : USER_ID ; stringMetaData ; mdp ; mdpCMP
+     *    
+     * 3. De manière à rendre la lecture claire, on renvoit le code à la ligne, on met des espaces de manière logique.
+     *    Exemple : 
+     *        for (int i = 0; i < k; i++) {
+     *            rs.getObject(i)
+     *                .toString();
+     *            k++;
+     *        }
+     *        
+     * 4. Les tests unitaires se font en marge du package principal, afin de ne pas mélanger toutes les classes.
+     *    
+     * 5. Les packages commencent par une majuscule, et sont écrits en anglais.
+     *    
+     * 6. Les accesseurs directs (getters et setters) des attributs d’une classe doivent être préfixés d’un get pour la lecture et d’un set pour l’écriture. Le suffixe doit être le nom de l’attribut (ou un dérivé proche)
+     *    Exemple : getUserID() ; setUserMDP()
+     *    
+     * 7. On commente au maximum les portions de code difficiles à la lecture, même avec la convention de codage.
+     *    On commente à la ligne avant une partie de code précise.
+     *    On réalise un bloc de commentaire si l’explication est longue afin d’éviter les multiples commentaires de ligne.
+     *    On inactive une portion de code avec du commentaire si le code ne sert plus ou s’il doit être débogué. Cela évite de le supprimer.
+     *    Réserver les commentaires multi-lignes à la javadoc et à l’inactivation du code au maximum.
+	 */
