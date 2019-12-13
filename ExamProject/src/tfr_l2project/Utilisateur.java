@@ -59,8 +59,6 @@ public class Utilisateur {
 
 	
 	
-	
-	
 	public Utilisateur() {
 		String userID = null;
 		String userMDP = null;
