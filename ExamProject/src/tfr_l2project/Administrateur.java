@@ -63,13 +63,9 @@ public class Administrateur extends Utilisateur{
 		Scanner sc = new Scanner(System.in);
 		String ID = sc.nextLine();
 		String MDP = newMDP().toString();
-		int profile = sc.nextInt();
-		
-		
-		Utilisateur newUser = new Utilisateur(ID, MDP, profile);
-		
+		int profile = sc.nextInt();	
+		Utilisateur newUser = new Utilisateur(ID, MDP, profile);	
 		return newUser;
-		
 	}
 	
 	
