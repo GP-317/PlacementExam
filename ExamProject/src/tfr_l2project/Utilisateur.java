@@ -57,6 +57,18 @@ public class Utilisateur {
 		PROFILE = pROFILE;
 	}
 
+	
+	
+	
+	
+	public Utilisateur() {
+		String userID = null;
+		String userMDP = null;
+		int profile = 0;
+	}
+	
+	
+	
 	/**
 	 * Méthode "constructeur" qui paramètre identifiant et mot de passe de l'utilisateur.
 	 * @param userID Identifiant de l'utilisateur
