@@ -10,7 +10,6 @@ package tfr_l2project;
 
 public class Utilisateur {
 	
-	// Scanner input = new Scanner(System.in);
 	
 	protected String USER_MDP;
 	private String USER_ID;
