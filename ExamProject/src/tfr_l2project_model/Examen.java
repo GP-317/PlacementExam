@@ -20,7 +20,7 @@ public class Examen {
 	
 	
 	/**
-	 * @return user l'utilisateur
+	 * @return title le nom de l'examen
 	 */
 	public String getTitle() {
 		return TITLE;
@@ -29,7 +29,7 @@ public class Examen {
 
 
 	/**
-	 * @return the nameTeacher
+	 * @return the nameTeacher le nom du professeur
 	 */
 	public String getNameTeacher() {
 		return NAME_TEACHER;
@@ -38,7 +38,7 @@ public class Examen {
 
 
 	/**
-	 * @return the matiere
+	 * @return the matiere le nom de la matière de l'examen
 	 */
 	public String getMatiere() {
 		return MATIERE;
@@ -47,7 +47,7 @@ public class Examen {
 
 
 	/**
-	 * @return the duration
+	 * @return the duration la durée de l'examen
 	 */
 	public int getDuration() {
 		return DURATION;
@@ -56,7 +56,7 @@ public class Examen {
 
 
 	/**
-	 * @return the dateBegin
+	 * @return the dateBegin l'heure de début
 	 */
 	public int[] getDateBegin() {
 		return DATE_BEGIN;
@@ -65,7 +65,7 @@ public class Examen {
 
 
 	/**
-	 * @param title the user to set
+	 * @param title attribue le nom de l'examen
 	 */
 	public void setTitle(String title) {
 		this.TITLE = title;
@@ -74,7 +74,7 @@ public class Examen {
 
 
 	/**
-	 * @param nameTeacher the nameTeacher to set
+	 * @param nameTeacher attribue le nom du professeur
 	 */
 	public void setNameTeacher(String nameTeacher) {
 		this.NAME_TEACHER = nameTeacher;
@@ -83,7 +83,7 @@ public class Examen {
 
 
 	/**
-	 * @param matiere the matiere to set
+	 * @param matiere attribue le nom de la matière
 	 */
 	public void setMatiere(String matiere) {
 		this.MATIERE = matiere;
@@ -92,7 +92,7 @@ public class Examen {
 
 
 	/**
-	 * @param duration the duration to set
+	 * @param duration attribue la durée
 	 */
 	public void setDuration(int duration) {
 		this.DURATION = duration;
@@ -101,7 +101,7 @@ public class Examen {
 
 
 	/**
-	 * @param dateBegin the dateBegin to set
+	 * @param dateBegin attribue l'heure de début d'épreuve
 	 */
 	public void setDateBegin(int[] dateBegin) {
 		this.DATE_BEGIN = dateBegin;
@@ -110,7 +110,7 @@ public class Examen {
 
 
 	/**
-	 * 
+	 * Crée une nouvelle épreuve d'un examen
 	 * @param title
 	 * @param nameTeacher
 	 * @param matiere
@@ -126,6 +126,11 @@ public class Examen {
 	}
 	
 	
+	public void modifyExam() {
+		
+		
+		
+	}
 	
 	
 	

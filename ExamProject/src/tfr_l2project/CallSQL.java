@@ -351,12 +351,7 @@ public class CallSQL {
 		return str;
 	}
 	
-//	public static void createUser() throws SQLException {
-//		CN = DriverManager.getConnection(URL, USER, MDP);
-//
-//		Statement st = CN.createStatement();
-//		String rs = 
-//	}
+
 	
 	
 	
