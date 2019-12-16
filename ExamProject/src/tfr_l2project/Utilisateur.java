@@ -10,10 +10,10 @@ package tfr_l2project;
 
 public class Utilisateur {
 	
-	// Scanner input = new Scanner(System.in);
 	
 	protected String USER_MDP;
 	private String USER_ID;
+	private int PROFILE;
 	
 	
 	/**
@@ -48,14 +48,33 @@ public class Utilisateur {
 		return this.USER_ID;
 	}
 	
+	public int getPROFILE() {
+		return PROFILE;
+	}
+
+	public void setPROFILE(int pROFILE) {
+		PROFILE = pROFILE;
+	}
+
+	
+	
+	public Utilisateur() {
+		String userID = null;
+		String userMDP = null;
+		int profile = 0;
+	}
+	
+	
+	
 	/**
 	 * Méthode "constructeur" qui paramètre identifiant et mot de passe de l'utilisateur.
 	 * @param userID Identifiant de l'utilisateur
 	 * @param userMDP Mot de passe de l'utilisateur
 	 */
-	public Utilisateur(String userID, String userMDP) {
+	public Utilisateur(String userID, String userMDP, int profile) {
 		this.USER_ID = userID;
 		this.USER_MDP = userMDP;
+		this.PROFILE = profile;
 	}
 	
 }

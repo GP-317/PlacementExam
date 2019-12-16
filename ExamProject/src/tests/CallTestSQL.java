@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 import tfr_l2project.CallSQL;
 
-public class callTestSQL {
+public class CallTestSQL {
 		
 	public static void main(String[] args) {
 		

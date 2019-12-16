@@ -2,6 +2,7 @@ package tfr_l2project;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -280,7 +281,7 @@ public class CallSQL {
 
 		System.out.println("\n**********************************************************");
 		
-		while(rs.next()){         
+		while(rs.next()) {
 			for(int i = 1; i <= resultMeta.getColumnCount(); i++)				
 				System.out.print("\t" + rs.getObject(i).toString() + "\t |");	
 															
@@ -351,5 +352,61 @@ public class CallSQL {
 		return str;
 	}
 	
+	
+	public static boolean comparePW(String user, String mdp) throws SQLException {
+		
+		CN = DriverManager.getConnection(URL, USER, MDP);
+		
+
+		PreparedStatement st = CN.prepareStatement("SELECT password FROM utilisateur WHERE email = ?");
+		st.setString(1, user);
+		ResultSet rs = st.executeQuery();
+		
+		String str = "";
+		
+		while(rs.next()) {
+			str = rs.getString("password");
+		}
+		
+		if ( str.equals(mdp) ) {
+			return true;
+		}
+		else return false;
+	}
+	
+	
+	
+	public static String getNameUser(String ID) throws SQLException {
+		CN = DriverManager.getConnection(URL, USER, MDP);
+
+		PreparedStatement st = CN.prepareStatement("SELECT prenom FROM utilisateur WHERE email = ?");
+		st.setString(1, ID);
+		ResultSet rs = st.executeQuery();
+		
+		String str = "";
+		
+		while(rs.next()) {
+			str = rs.getString("prenom");
+		}
+		
+		return str;
+	}
+	
+	
+	public static int getUserProfile(String ID) throws SQLException {
+		CN = DriverManager.getConnection(URL, USER, MDP);
+
+		PreparedStatement st = CN.prepareStatement("SELECT idProfil FROM utilisateur WHERE email = ?");
+		st.setString(1, ID);
+		ResultSet rs = st.executeQuery();
+		
+		int str = 0;
+		
+		while(rs.next()) {
+			str = rs.getInt("idProfil");
+		}
+		
+		return str;
+	}
 	
 }
