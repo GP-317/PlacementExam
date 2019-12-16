@@ -60,6 +60,8 @@ public class Administrateur extends Utilisateur{
 
 	public Utilisateur createUser() {
 		
+		
+		
 		Scanner sc = new Scanner(System.in);
 		String ID = sc.nextLine();
 		String MDP = newMDP().toString();

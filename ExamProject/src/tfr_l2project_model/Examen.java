@@ -126,14 +126,4 @@ public class Examen {
 	}
 	
 	
-	public void modifyExam() {
-		
-		
-		
-	}
-	
-	
-	
-	
-	
 }
