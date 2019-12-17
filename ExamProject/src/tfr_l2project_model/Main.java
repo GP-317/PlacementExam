@@ -3,7 +3,6 @@ package tfr_l2project_model;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import tfr_l2project.CallSQL;
 import tfr_l2project.Utilisateur;
 
 public class Main {
@@ -26,6 +25,10 @@ public class Main {
 			UserLambda.setPROFILE(CallSQL.getUserProfile(ID));
 		}
 		else System.out.println("Erreur de connexion");
+	
+	CallSQL.updateExamen();
+	
+	
 	}
 
 }
