@@ -2,7 +2,7 @@ package tests;
 
 import java.sql.SQLException;
 
-import tfr_l2project.CallSQL;
+import tfr_l2project_model.CallSQL;
 
 public class CallTestSQL {
 		

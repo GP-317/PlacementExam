@@ -1,4 +1,4 @@
-package tfr_l2project;
+package tfr_l2project_model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
