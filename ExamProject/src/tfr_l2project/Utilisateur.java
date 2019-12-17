@@ -57,7 +57,10 @@ public class Utilisateur {
 	}
 
 	
-	
+	/**
+	 * Méthode créant un utilisateur vide, servant d'utilisateur par défaut en l'absence
+	 * d'informations supplémentaires.
+	 */
 	public Utilisateur() {
 		String userID = null;
 		String userMDP = null;

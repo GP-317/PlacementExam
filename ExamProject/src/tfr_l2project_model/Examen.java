@@ -13,7 +13,7 @@ public class Examen {
 	public String NAME_TEACHER;
 	public String MATIERE;
 	public int DURATION;
-	public int[] DATE_BEGIN;
+	public int[] START_TIME;
 	
 	
 	
@@ -56,8 +56,8 @@ public class Examen {
 	/**
 	 * @return the dateBegin l'heure de début
 	 */
-	public int[] getDateBegin() {
-		return DATE_BEGIN;
+	public int[] getStartTime() {
+		return START_TIME;
 	}
 
 
@@ -99,28 +99,28 @@ public class Examen {
 
 
 	/**
-	 * @param dateBegin attribue l'heure de début d'épreuve
+	 * @param startTime attribue l'heure de début d'épreuve
 	 */
-	public void setDateBegin(int[] dateBegin) {
-		this.DATE_BEGIN = dateBegin;
+	public void setStartTime(int[] startTime) {
+		this.START_TIME = startTime;
 	}
 
 
 
 	/**
 	 * Crée une nouvelle épreuve d'un examen
-	 * @param title
-	 * @param nameTeacher
-	 * @param matiere
-	 * @param duration
-	 * @param dateBegin
+	 * @param title Intitulé de l'examen
+	 * @param nameTeacher Nom du professeur surveillant
+	 * @param matiere Nom de la matière concerné
+	 * @param duration Durée de l'examen
+	 * @param startTime Jour et heure du début d'épreuve
 	 */
-	public void newExam(String title, String nameTeacher, String matiere, int duration, int[] dateBegin) {
+	public void newExam(String title, String nameTeacher, String matiere, int duration, int[] startTime) {
 		this.TITLE = title;
 		this.NAME_TEACHER = nameTeacher;
 		this.MATIERE = matiere;
 		this.DURATION = duration;
-		this.DATE_BEGIN = dateBegin;
+		this.START_TIME = startTime;
 	}
 	
 	

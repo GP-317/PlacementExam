@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
 
 
@@ -41,6 +42,7 @@ public class CallSQL {
 	
 	
 	/**
+	 * URL de la base de données attribuée
 	 * @return the url
 	 */
 	public static String getURL() {
@@ -50,6 +52,7 @@ public class CallSQL {
 
 
 	/**
+	 * Utilisateur de la BDD
 	 * @return the user
 	 */
 	public static String getUser() {
@@ -59,55 +62,11 @@ public class CallSQL {
 
 
 	/**
+	 * Mot de passe d'accès à la base de données
 	 * @return the mdp
 	 */
 	public static String getMDP() {
 		return MDP;
-	}
-
-
-
-	/**
-	 * @return the cn
-	 */
-	public static Connection getCN() {
-		return CN;
-	}
-
-
-
-	/**
-	 * @param url the url to set
-	 */
-	public static void setURL(String url) {
-		CallSQL.URL = url;
-	}
-
-
-
-	/**
-	 * @param user the user to set
-	 */
-	public static void setUser(String user) {
-		CallSQL.USER = user;
-	}
-
-
-
-	/**
-	 * @param mdp the mdp to set
-	 */
-	public static void setMDP(String mdp) {
-		CallSQL.MDP = mdp;
-	}
-
-
-
-	/**
-	 * @param cn the cn to set
-	 */
-	public static void setCN(Connection cn) {
-		CallSQL.CN = cn;
 	}
 
 
@@ -295,9 +254,7 @@ public class CallSQL {
 	
 	
 	
-	/**
-	 * WIP
-	 */
+// Code inutilisé
 	
 //	public static void setOneUserID(String login) throws SQLException {
 //		
@@ -330,6 +287,7 @@ public class CallSQL {
 	 * @return str renvoie une chaine de caractères
 	 * @throws SQLException
 	 */
+	@Deprecated
 	public static String update() throws SQLException {
 		
 		CN = DriverManager.getConnection(URL, USER, MDP);
@@ -353,6 +311,18 @@ public class CallSQL {
 	}
 	
 	
+	
+	/**
+	 * Méthode servant à la comparaison du mot de passe entré par l'utilisateur lors de son authentification
+	 * et le mot de passe enregistré dans la base de données, lié à son identifiant utilisateur.
+	 * La méthode recherche d'abord l'identifiant entré puis sélectionne le mot de passe afin de le comparer avec
+	 * le mot de passe en paramètre.
+	 * @param user l'identifiant de l'utilisateur désirant s'authentifier
+	 * @param mdp mot de passe entré par l'utilisateur
+	 * @return un booléen, qui indiquera si oui ou non l'authentification peut s'effectuer. Dépend du résultat de la
+	 * comparaison.
+	 * @throws SQLException
+	 */
 	public static boolean comparePW(String user, String mdp) throws SQLException {
 		
 		CN = DriverManager.getConnection(URL, USER, MDP);
@@ -376,6 +346,14 @@ public class CallSQL {
 	
 	
 	
+	
+	
+	/**
+	 * Sélectionne le nom de l'utilisateur dans la base de données, depuis son identifiant.
+	 * @param ID identifiant
+	 * @return le prénom de l'utilisateur
+	 * @throws SQLException
+	 */
 	public static String getNameUser(String ID) throws SQLException {
 		CN = DriverManager.getConnection(URL, USER, MDP);
 
@@ -393,6 +371,13 @@ public class CallSQL {
 	}
 	
 	
+	
+	/**
+	 * Méthode de sélection du profil d'un utilisateur
+	 * @param ID utilisateur dont on recherche le profil
+	 * @return l'entier désignant le profil attribué
+	 * @throws SQLException
+	 */
 	public static int getUserProfile(String ID) throws SQLException {
 		CN = DriverManager.getConnection(URL, USER, MDP);
 
@@ -400,13 +385,186 @@ public class CallSQL {
 		st.setString(1, ID);
 		ResultSet rs = st.executeQuery();
 		
-		int str = 0;
+		int profil = 0;
 		
 		while(rs.next()) {
-			str = rs.getInt("idProfil");
+			profil = rs.getInt("idProfil");
 		}
 		
-		return str;
+		return profil;
 	}
+	
+	
+	/**
+	 * Méthode créant un nouvel examen selon les paramètres requis par l'application à l'utilisateur.
+	 * Ne renvoie rien, met simplement à jour la base de données.
+	 * @throws SQLException
+	 */
+	public static void newExamen() throws SQLException{
+		
+		CN = DriverManager.getConnection(URL, USER, MDP);
+		PreparedStatement  st = CN.prepareStatement("INSERT INTO examen (idExamen, titre, duree, "
+				+ "profSurveillant, matiere,tempsDebut)"
+				+"  VALUES (NULL, ?, ?, ?, ?, ?)");
+		System.out.println("Veuillez saisir un titre d'examen : ");
+		Scanner t = new Scanner(System.in);
+		String x= t.nextLine();
+		st.setString(1,x);
+
+		System.out.println("Veuillez saisir une durée d'examen ex 02:00:00 : ");
+		Scanner d= new Scanner(System.in);
+		String y= d.nextLine();
+		st.setString(2,y);
+
+		System.out.println("Veuillez saisir le ou les noms/prenoms des profs surveillant de l'examen : ");
+		Scanner t1= new Scanner(System.in);
+		String b= t1.nextLine();
+		st.setString(3,b);
+
+		System.out.println("Veuillez saisir la matiere de l'examen : ");
+		Scanner m= new Scanner(System.in);
+		String z = m.nextLine();
+		st.setString(4,z);
+
+		System.out.println("Veuillez saisir la date est l'heure de l'examen ex: 2018-12-31 10:30:00  : ");
+		Scanner s= new Scanner(System.in);
+		String p= s.nextLine();
+		st.setString(5,p);
+		st.execute();
+	}
+	
+	
+	
+	/**
+	 * Méthode qui met à jour un examen sélectionné selon les paramètres désirés.
+	 * Il ne faudra rien rentrer pour ne pas modifier l'intitulé.
+	 * @throws SQLException
+	 */	
+	public static void updateExamen() throws SQLException{
+		
+		System.out.println("Veuillez saisir le titre de l'examen à mettre à jour (ex: 'Mathématiques L2 Info') : ");
+		Scanner i = new Scanner(System.in);
+		String f = i.nextLine();
+		
+		
+		System.out.println("Veuillez saisir ici la nouveau titre de l'examen  :");		
+		Scanner t = new Scanner(System.in);
+		String x = t.nextLine();
+		if ( x.length() != 0 ) {
+			updateExamenTitre(f, x);
+		}
+
+		System.out.println("Veuillez saisir la nouvelle duree : ");
+		Scanner d = new Scanner(System.in);
+		String y = d.nextLine();
+		if ( y.length() != 0 ) {
+			updateExamenDuree(f, y);
+		}
+
+		System.out.println("Veuillez saisir le profSurveillant : ");
+		Scanner t1 = new Scanner(System.in);
+		String b = t1.nextLine();
+		if ( b.length() != 0 ) {
+			updateExamenProfSurv(f, b);
+		}
+
+		System.out.println("Veuillez saisir la nouvelle matiere  : ");
+		Scanner m = new Scanner(System.in);
+		String z = m.nextLine();
+		if ( z.length() != 0 ) {
+			updateExamenMatiere(f, z);
+		}
+
+		System.out.println("Veuillez saisir la nouvelle date et l'heure de l'examen ex: 2018-12-31 10:30:00  : ");
+		Scanner s = new Scanner(System.in);
+		String p = s.nextLine();
+		if ( p.length() != 0 ) {
+			updateExamenTempsDebut(f, p);
+		}
+		
+	}
+	
+	/**
+	 * Met à jour le titre de l'examen
+	 * @param titreInit Titre initial de recherche
+	 * @param titreModif Titre modifié à l'issue de la requête
+	 * @throws SQLException
+	 */
+	public static void updateExamenTitre(String titreInit, String titreModif) throws SQLException{
+
+		CN = DriverManager.getConnection(URL, USER, MDP);
+		PreparedStatement st = CN.prepareStatement("UPDATE examen SET titre =? WHERE titre =?");
+
+		st.setString(2, titreInit);
+		st.setString(1, titreModif);
+
+		st.executeUpdate();
+	}
+
+	/**
+	 * Met à jour la durée d'un examen
+	 * @param titre Titre de l'examen recherché
+	 * @param duree Durée mise à jour pour la requête
+	 * @throws SQLException
+	 */
+	public static void updateExamenDuree(String titre, String duree) throws SQLException{
+
+		CN = DriverManager.getConnection(URL, USER, MDP);
+		PreparedStatement  st = CN.prepareStatement("UPDATE examen SET duree=? WHERE titre =?");
+
+		st.setString(1, duree);
+		st.setString(2, titre);
+
+		st.executeUpdate();
+	}
+	
+	/**
+	 * Met à jour le nom du prof surveillant
+	 * @param titre Titre de l'examen recherché
+	 * @param prof Nom du professeur nouvellement assigné
+	 * @throws SQLException
+	 */
+	public static void updateExamenProfSurv(String titre, String prof) throws SQLException{
+		CN = DriverManager.getConnection(URL, USER, MDP);
+		PreparedStatement  st = CN.prepareStatement("UPDATE examen SET profSurveillant=? WHERE titre =?");
+		
+		st.setString(1, prof);
+		st.setString(2, titre);
+		
+		st.executeUpdate();
+	}
+
+	/**
+	 * Met à jour la matière concerné lors de l'examen
+	 * @param titre Titre de l'examen recherché
+	 * @param matiere Nom de la matière modifié
+	 * @throws SQLException
+	 */
+	public static void updateExamenMatiere(String titre, String matiere) throws SQLException{
+		CN = DriverManager.getConnection(URL, USER, MDP);
+		PreparedStatement  st = CN.prepareStatement("UPDATE examen SET matiere=? WHERE titre =?");
+		
+		st.setString(1, matiere);
+		st.setString(2, titre);
+		
+		st.executeUpdate();
+	}
+
+	/**
+	 * Met à jour la date et l'heure du début d'épreuve
+	 * @param titre Titre de l'examen concerné
+	 * @param tpsDeb Chaine de caractères exprimant l'heure et la date de début d'épreuve selon la syntaxe de la base de données.
+	 * @throws SQLException
+	 */
+	public static void updateExamenTempsDebut(String titre, String tpsDeb) throws SQLException{
+		CN = DriverManager.getConnection(URL, USER, MDP);
+		PreparedStatement  st = CN.prepareStatement("UPDATE examen SET tempsDebut =? WHERE titre =?");
+		
+		st.setString(1, tpsDeb);
+		st.setString(2, titre);
+		
+		st.executeUpdate();
+	}
+	
 	
 }

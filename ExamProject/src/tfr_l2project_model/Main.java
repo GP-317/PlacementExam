@@ -25,6 +25,10 @@ public class Main {
 			UserLambda.setPROFILE(CallSQL.getUserProfile(ID));
 		}
 		else System.out.println("Erreur de connexion");
+	
+	CallSQL.updateExamen();
+	
+	
 	}
 
 }
