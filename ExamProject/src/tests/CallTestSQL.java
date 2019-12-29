@@ -8,13 +8,13 @@ public class CallTestSQL {
 		
 	public static void main(String[] args) {
 		
-		try {
-			CallSQL.getStudentIdentity();
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			CallSQL.getStudentIdentity();
+//			
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		
 //		try {
@@ -76,12 +76,11 @@ public class CallTestSQL {
 //		}
 		
 		
-//		try {
-//			String req = CallSQL.update();
-//			System.out.println(req);
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			CallSQL.updateExamen();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
